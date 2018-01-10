@@ -1,0 +1,2 @@
+# magento.module
+Learn magento
