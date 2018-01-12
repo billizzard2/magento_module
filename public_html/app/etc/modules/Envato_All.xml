@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Envato_Catalog>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Envato_Catalog>
+    </modules>
+</config>

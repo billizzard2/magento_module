@@ -23,6 +23,17 @@ class Magentotutorial_Collections_IndexController extends Mage_Core_Controller_F
             ->addItem($thing_2)
             ->addItem($thing_3);
 
+        $collection_of_products = Mage::getModel('catalog/product')->getCollection();
+        $collection_of_products = Mage::getModel('catalog/product')
+            ->getCollection()
+            ->addAttributeToSelect('meta_title')
+            ->addAttributeToSelect('price');
+        var_dump((string) Mage::getModel('catalog/product')->getCollection()->addFieldToFilter('sku', 'n2610')->getSelect());
+
+
+
+        echo '-------------';
+
         var_dump($collection_of_things->getColumnValues('name'));
     }
 

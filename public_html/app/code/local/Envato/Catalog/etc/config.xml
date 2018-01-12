@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Envato_Catalog>
+            <version>0.1.0</version>
+        </Envato_Catalog>
+    </modules>
+
+    <global>
+        <models>
+            <catalog>
+                <rewrite>
+                    <category>Envato_Catalog_Model_Category</category>
+                </rewrite>
+            </catalog>
+        </models>
+    </global>
+
+</config>
+
