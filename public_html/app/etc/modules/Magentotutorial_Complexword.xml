@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Magentotutorial_Complexword>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Magentotutorial_Complexword>
+    </modules>
+</config>

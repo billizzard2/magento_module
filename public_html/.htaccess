@@ -247,3 +247,5 @@
         Deny from all
 
     </Files>
+
+     SetEnv MAGE_IS_DEVELOPER_MODE "true"

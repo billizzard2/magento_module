@@ -1,0 +1,8 @@
+<config>
+    <modules>
+        <Magentotutorial_Collections>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Magentotutorial_Collections>
+    </modules>
+</config>

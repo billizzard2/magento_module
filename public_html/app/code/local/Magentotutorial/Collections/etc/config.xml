@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Magentotutorial_Collections>
+            <version>0.1.0</version>
+        </Magentotutorial_Collections>
+    </modules>
+
+    <frontend>
+        <routers>
+            <collections>
+                <use>standard</use>
+                <args>
+                    <module>Magentotutorial_Collections</module>
+                    <frontName>collections</frontName>
+                </args>
+            </collections>
+        </routers>
+    </frontend>
+
+</config>
+

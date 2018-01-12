@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Magentotutorial_Complexword>
+            <version>0.1.0</version>
+        </Magentotutorial_Complexword>
+    </modules>
+
+    <frontend>
+        <routers>
+            <complexword>
+                <use>standard</use>
+                <args>
+                    <module>Magentotutorial_Complexword</module>
+                    <frontName>complexword</frontName>
+                </args>
+            </complexword>
+        </routers>
+    </frontend>
+
+    <global>
+        <models>
+            <complexword>
+                <class>Magentotutorial_Complexword_Model</class>
+                <resourceModel>complexword_resource</resourceModel>
+            </complexword>
+
+            <complexword_resource>
+                <class>Magentotutorial_Complexword_Model_Resource</class>
+                <entities>
+                    <evablogpost>
+                        <table>evablog_posts</table>
+                    </evablogpost>
+                </entities>
+            </complexword_resource>
+        </models>
+
+        <resources>
+            <complexword_setup>
+                <setup>
+                    <module>Magentotutorial_Complexword</module>
+                    <class>Magentotutorial_Complexword_Model_Resource_Setup</class>
+                </setup>
+            </complexword_setup>
+        </resources>
+    </global>
+</config>
+
