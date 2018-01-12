@@ -13,7 +13,7 @@ class Magentotutorial_Collections_IndexController extends Mage_Core_Controller_F
         $thing_2->setAge(12);
 
         $thing_3 = new Varien_Object();
-        $thing_3->setName('Spot');
+        $thing_3->setName('Spot1');
         $thing_3->setLastName('The Dog');
         $thing_3->setAge(7);
 
