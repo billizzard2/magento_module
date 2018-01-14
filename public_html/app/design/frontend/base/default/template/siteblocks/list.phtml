@@ -1,0 +1,6 @@
+<?php foreach ($this->getBlocks() as $block) : ?>
+    <div class="siteblock">
+        <div class="block-title"><?=$block->getTitle()?></div>
+        <div class="block-content"><?=$block->getContent()?></div>
+    </div>
+<?php endforeach; ?>
