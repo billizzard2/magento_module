@@ -46,6 +46,17 @@
     </global>
 
     <frontend>
+        <events>
+            <checkout_cart_product_add_after>
+                <observers>
+                    <siteblocks>
+                        <class>siteblocks/observer</class>
+                        <method>checkout_cart_product_add_after</method>
+                        <type>model</type>
+                    </siteblocks>
+                </observers>
+            </checkout_cart_product_add_after>
+        </events>
         <layout>
             <updates>
                 <siteblocks module="siteblocks">
