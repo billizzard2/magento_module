@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Itransition_Insurance>
+            <version>0.1.0</version>
+        </Itransition_Insurance>
+    </modules>
+
+    <global>
+        <blocks>
+            <insurance>
+                <class>Itransition_Insurance_Block</class>
+            </insurance>
+        </blocks>
+
+        <models>
+            <insurance>
+                <class>Itransition_Insurance_Model</class>
+                <resourceModel>insurance_resource</resourceModel>
+            </insurance>
+
+            <!--<insurance_resource>-->
+                <!--<class>Itransition_Insurance_Model_Resource</class>-->
+                <!--<entities>-->
+                    <!--<block>-->
+                        <!--<table>ign_siteblock</table>-->
+                    <!--</block>-->
+                <!--</entities>-->
+            <!--</insurance_resource>-->
+        </models>
+
+        <events>
+            <adminhtml_init_system_config>
+                <observers>
+                    <init_system_config>
+                        <class>insurance/observer</class>
+                        <method>changeSystemConfig</method>
+                    </init_system_config>
+                </observers>
+            </adminhtml_init_system_config>
+        </events>
+
+        <resources>
+            <insurance_setup>
+                <setup>
+                    <module>Itransition_Insurance</module>
+                </setup>
+            </insurance_setup>
+        </resources>
+
+        <helpers>
+            <insurance>
+                <class>Itransition_Insurance_Helper</class>
+            </insurance>
+        </helpers>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <insurance module="insurance">
+                    <file>insurance.xml</file>
+                </insurance>
+            </updates>
+        </layout>
+
+        <routers>
+            <siteblocks>
+                <use>standard</use>
+                <args>
+                    <module>Itransition_Insurance</module>
+                    <frontName>insurance</frontName>
+                </args>
+            </siteblocks>
+        </routers>
+        <translate>
+            <modules>
+                <IGN_Siteblocks>
+                    <files>
+                        <default>Itransition_Insurance.csv</default>
+                    </files>
+                </IGN_Siteblocks>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <siteblocks before="Mage_Adminhtml">Itransition_Insurance_Adminhtml</siteblocks>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <default>
+        <insurance>
+            <settings>
+                <enableField>0</enableField>
+            </settings>
+        </insurance>
+        <carriers>
+            <flatrate>
+                <insuranceEnable>0</insuranceEnable>
+            </flatrate>
+        </carriers>
+    </default>
+
+</config>

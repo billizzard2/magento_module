@@ -37,6 +37,7 @@
             </siteblocks_setup>
         </resources>
 
+        <!-- Отвечает за расположение файла Helper/Data.php -->
         <helpers>
             <siteblocks>
                 <class>IGN_Siteblocks_Helper</class>
@@ -73,6 +74,7 @@
         </translate>
     </frontend>
 
+    <!--  Отвечает за расположение файлов для админки i -->
     <admin>
         <routers>
             <adminhtml>

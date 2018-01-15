@@ -348,6 +348,7 @@ One page checkout main layout
 
         <reference name="root">
             <action method="setTemplate"><template>page/2columns-right.phtml</template></action>
+            <block type="insurance/mycontent" before="-" name="didididi" template="insurance/list.phtml"/>
         </reference>
         <reference name="right">
             <action method="unsetChildren"></action>
