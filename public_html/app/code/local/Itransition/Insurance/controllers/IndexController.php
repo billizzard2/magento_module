@@ -1,6 +1,6 @@
 <?php
 
-class IGN_Siteblocks_IndexController extends Mage_Core_Controller_Front_Action
+class Itransition_Insurance_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction() {
 

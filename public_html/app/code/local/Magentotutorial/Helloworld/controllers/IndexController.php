@@ -6,6 +6,7 @@ class Magentotutorial_Helloworld_IndexController extends Mage_Core_Controller_Fr
     public function indexAction()
     {
         //echo 'Hello World';
+        $layout = $this->getLayout();
         $this->loadLayout();
         $this->renderLayout();
     }

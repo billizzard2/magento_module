@@ -8,6 +8,25 @@
     </modules>
 
     <global>
+
+
+
+
+            <sales>
+                <quote>
+                    <totals>
+                        <insurance>
+                            <class>insurance/sales_quote_address_total_fee</class>
+                        </insurance>
+                    </totals>
+                </quote>
+            </sales>
+
+
+
+
+
+
         <blocks>
             <insurance>
                 <class>Itransition_Insurance_Block</class>
@@ -98,6 +117,11 @@
     </admin>
 
     <default>
+        <design>
+            <header>
+                <welcome>Defaultwerwerwre welcome msg!</welcome>
+            </header>
+        </design>
         <insurance>
             <settings>
                 <enableField>0</enableField>
@@ -107,6 +131,11 @@
             <flatrate>
                 <insuranceEnable>0</insuranceEnable>
             </flatrate>
+        </carriers>
+        <carriers>
+            <freeshipping>
+                <insuranceEnable>0</insuranceEnable>
+            </freeshipping>
         </carriers>
     </default>
 

@@ -1,4 +1,15 @@
+<!--1111111111111111111111111111111111111122-->
+<!--<li class="control">-->
+<!--    <input type="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1" checked="checked" title="--><?php //echo $this->__('Use Billing Address') ?><!--" class="checkbox" /><label for="shipping:same_as_billing">--><?php //echo $this->getBlocks();?><!----><?php //echo $this->__('Use Billing Address') ?><!--</label>-->
+<!--</li>-->
+<?php if ($this->isInsuranceEnabled()) : ?>
+<dt >
+    <input id="p_method_insurance" value="1" type="checkbox" name="payment[insurance]" title="Insurance"  class="checkbox">
+    <label for="p_method_insurance" id="111">Include Insurance </label>
 
-<li class="control">
-    <input type="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1" checked="checked" title="<?php echo $this->__('Use Billing Address') ?>" class="checkbox" /><label for="shipping:same_as_billing"><?php echo $this->__('Use Billing Address') ?></label>
-</li>
+    <div>
+        Insurance: <?php echo $this->getInsuranceType() ?> (<?php echo $this->getInsuranceValue() . ' ' . $this->getTypePostfix()?>) <br>
+        Cost: <?php echo $this->getInsuranceCost() ?>
+    </div>
+</dt>
+<?php endif; ?>

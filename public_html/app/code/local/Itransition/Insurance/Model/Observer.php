@@ -4,6 +4,7 @@ class Itransition_Insurance_Model_Observer
 {
     public function changeSystemConfig(Varien_Event_Observer $observe)
     {
+
 //        $config = $observe->getConfig();
 //        $shippingGroups = $config->getNode('sections/carriers/groups');
 //        $shippingGroups->setNode();

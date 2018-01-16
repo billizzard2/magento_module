@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Turnkeye_Insurance>
+            <version>0.1.0</version>
+        </Turnkeye_Insurance>
+    </modules>
+
+    <frontend>
+        <routers>
+            <weblog>
+                <use>standard</use>
+                <args>
+                    <module>Turnkeye_Insurance</module>
+                    <frontName>turnkeye</frontName>
+                </args>
+            </weblog>
+        </routers>
+    </frontend>
+
+    <global>
+
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_totals>Turnkeye_Insurance_Block_Adminhtml_Sales_Order_Totals</sales_order_totals>
+                    <sales_order_invoice_totals>Turnkeye_Insurance_Block_Adminhtml_Sales_Order_Invoice_Totals</sales_order_invoice_totals>
+                    <sales_order_creditmemo_totals>Turnkeye_Insurance_Block_Adminhtml_Sales_Order_Creditmemo_Totals</sales_order_creditmemo_totals>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+
+
+        <sales>
+            <quote>
+                <totals>
+                    <turnkeye_insurance>
+                        <class>turnkeye_insurance/total_screen_quote</class>
+                        <after>subtotal</after>
+                        <before>tax</before>
+                    </turnkeye_insurance>
+                </totals>
+            </quote>
+            <order_invoice>
+                <totals>
+                    <turnkeye_insurance>
+                        <class>turnkeye_insurance/total_screen_invoice</class>
+                        <after>subtotal</after>
+                        <before>tax</before>
+                    </turnkeye_insurance>
+                </totals>
+            </order_invoice>
+            <order_creditmemo>
+                <totals>
+                    <turnkeye_insurance>
+                        <class>turnkeye_insurance/total_screen_creditmemo</class>
+                        <after>subtotal</after>
+                        <before>tax</before>
+                    </turnkeye_insurance>
+                </totals>
+            </order_creditmemo>
+        </sales>
+
+
+
+    </global>
+
+    <default>
+        <sales>
+            <totals_sort>
+                <turnkeye_insurance>15</turnkeye_insurance>
+            </totals_sort>
+        </sales>
+    </default>
+</config>
+
