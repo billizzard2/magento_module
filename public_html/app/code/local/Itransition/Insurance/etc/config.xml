@@ -20,14 +20,14 @@
                 <resourceModel>insurance_resource</resourceModel>
             </insurance>
 
-            <!--<insurance_resource>-->
-                <!--<class>Itransition_Insurance_Model_Resource</class>-->
+            <insurance_resource>
+                <class>Itransition_Insurance_Model_Resource</class>
                 <!--<entities>-->
                     <!--<block>-->
                         <!--<table>ign_siteblock</table>-->
                     <!--</block>-->
                 <!--</entities>-->
-            <!--</insurance_resource>-->
+            </insurance_resource>
         </models>
 
         <events>
