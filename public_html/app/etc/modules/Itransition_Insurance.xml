@@ -3,6 +3,9 @@
         <Itransition_Insurance>
             <active>true</active>
             <codePool>local</codePool>
+            <depends>
+                <Mage_Shipping/>
+            </depends>
         </Itransition_Insurance>
     </modules>
 </config>

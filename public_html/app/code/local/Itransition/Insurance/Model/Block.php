@@ -6,7 +6,7 @@
  * Time: 11.38
  */
 
-class Itransition_Insurance_Model_Insurance extends Mage_Core_Model_Abstract
+class Itransition_Insurance_Model_Block extends Mage_Core_Model_Abstract
 {
     protected function _construct() {
         parent::_construct();
