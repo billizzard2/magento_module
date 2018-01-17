@@ -14,7 +14,6 @@ class Itransition_Insurance_Model_Sales_Quote_Address_Total_Fee extends Mage_Sal
             return $this; //this makes only address type shipping to come through
         }
 
-
         $quote = $address->getQuote();
 
         if(Itransition_Insurance_Model_Fee::canApply($address)){ //your business logic
@@ -39,6 +38,7 @@ class Itransition_Insurance_Model_Sales_Quote_Address_Total_Fee extends Mage_Sal
             'title'=>Mage::helper('insurance')->__('Fee'),
             'value'=> $amt
         ));
+
         return $this;
     }
 }

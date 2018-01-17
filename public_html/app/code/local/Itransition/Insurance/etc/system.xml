@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 
 <config>
+
+
+
     <sections>
+
         <insurance module="insurance" translate="label">
             <label>Insurance</label>
             <tab>sales</tab>

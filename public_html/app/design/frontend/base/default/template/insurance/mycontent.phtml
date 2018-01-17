@@ -1,15 +1,59 @@
-<!--1111111111111111111111111111111111111122-->
-<!--<li class="control">-->
-<!--    <input type="checkbox" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="1" checked="checked" title="--><?php //echo $this->__('Use Billing Address') ?><!--" class="checkbox" /><label for="shipping:same_as_billing">--><?php //echo $this->getBlocks();?><!----><?php //echo $this->__('Use Billing Address') ?><!--</label>-->
-<!--</li>-->
-<?php if ($this->isInsuranceEnabled()) : ?>
-<dt >
-    <input id="p_method_insurance" value="1" type="checkbox" name="payment[insurance]" title="Insurance"  class="checkbox">
-    <label for="p_method_insurance" id="111">Include Insurance </label>
+<div id="insure-info" style="display:none">
+    <dt>Insurance available</dt>
+    <dd>
+        <ul>
+            <li>
+                <input name="s_insurance" id="s_insurance" type="checkbox" value="1" class="checkbox">
+                <label for="s_insurance" >
+                    Include insurance <br>
+                    <b><span id="s_insurance_cost"></span></b>
+                </label>
+            </li>
+        </ul>
+    </dd>
+</div>
 
-    <div>
-        Insurance: <?php echo $this->getInsuranceType() ?> (<?php echo $this->getInsuranceValue() . ' ' . $this->getTypePostfix()?>) <br>
-        Cost: <?php echo $this->getInsuranceCost() ?>
-    </div>
-</dt>
-<?php endif; ?>
+<script>
+
+    function InsuranceShipping(info) {
+
+        var data, infoNode, costNode, insuranceCheckbox;
+
+        var init = function(info) {
+            data = info;
+            infoNode = jQuery('#insure-info');
+            insuranceCheckbox = jQuery('#s_insurance');
+            costNode = jQuery('#s_insurance_cost');
+            addEvents();
+        }
+
+        var addEvents = function() {
+            if (data.length) {
+                jQuery('.sp-methods input[name=shipping_method]').on('change', function() {
+                    hideInfo();
+                    var value = jQuery(this).val();
+                    data.forEach(function(item) {
+                        if (item.isEnabled && ~value.indexOf(item.method)) {
+                            showInfo(item);
+                        }
+                    })
+                })
+            }
+        }
+
+        var hideInfo = function() {
+            infoNode.css('display', 'none');
+            insuranceCheckbox.prop('checked', false);
+        }
+
+        var showInfo = function(item) {
+            infoNode.css('display', 'block');
+            costNode.html(item.message)
+        }
+
+        init(info);
+    }
+
+    new InsuranceShipping(<?php echo json_encode($this->getInsuranceData()) ?>)
+
+</script>

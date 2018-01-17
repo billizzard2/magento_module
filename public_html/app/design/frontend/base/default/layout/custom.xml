@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <checkout_onepage_index> <!-- Adding our new step to onepage block  -->
+        <reference name='checkout.onepage'>
+            <action method='setTemplate'><template>custom/checkout/onepage.phtml</template></action>
+            <block type="custom/checkout_onepage_excellence" name="checkout.onepage.excellence" as="excellence" template="custom/checkout/onepage/excellence.phtml"/> <!-- Here we change the template of onepage block to our custom template -->
+        </reference>
+        <reference name='checkout.progress'> <!-- Change the template of progress block -->
+            <action method='setTemplate'><template>custom/checkout/onepage/progress.phtml</template></action>
+        </reference> <!-- Here we change the template of the progress block to our custom template created -->
+    </checkout_onepage_index>
+    <checkout_onepage_progress>  <!-- Change the template of progress block -->
+        <reference name='root'>
+            <action method='setTemplate'><template>custom/checkout/onepage/progress.phtml</template></action>
+        </reference>
+    </checkout_onepage_progress>
+
+</layout>

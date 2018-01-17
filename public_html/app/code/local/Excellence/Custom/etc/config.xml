@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Excellence_Custom>
+            <version>0.1.0</version>
+        </Excellence_Custom>
+    </modules>
+    <global>
+        <blocks>
+            <checkout>
+                <rewrite>
+                    <onepage>Excellence_Custom_Block_Checkout_Onepage</onepage>
+                </rewrite>
+            </checkout>
+            <custom>
+                <class>Excellence_Custom_Block</class>
+            </custom>
+
+            <models>
+                <checkout>
+                    <rewrite>
+                        <type_onepage>Excellence_Custom_Model_Checkout_Type_Onepage</type_onepage>
+                    </rewrite>
+                </checkout>
+            </models>
+        </blocks>
+    </global>
+</config>
