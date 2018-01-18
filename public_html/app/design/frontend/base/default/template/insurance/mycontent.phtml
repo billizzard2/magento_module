@@ -13,47 +13,19 @@
     </dd>
 </div>
 
-<script>
-
-    function InsuranceShipping(info) {
-
-        var data, infoNode, costNode, insuranceCheckbox;
-
-        var init = function(info) {
-            data = info;
-            infoNode = jQuery('#insure-info');
-            insuranceCheckbox = jQuery('#s_insurance');
-            costNode = jQuery('#s_insurance_cost');
-            addEvents();
-        }
-
-        var addEvents = function() {
-            if (data.length) {
-                jQuery('.sp-methods input[name=shipping_method]').on('change', function() {
-                    hideInfo();
-                    var value = jQuery(this).val();
-                    data.forEach(function(item) {
-                        if (item.isEnabled && ~value.indexOf(item.method)) {
-                            showInfo(item);
-                        }
-                    })
-                })
-            }
-        }
-
-        var hideInfo = function() {
-            infoNode.css('display', 'none');
-            insuranceCheckbox.prop('checked', false);
-        }
-
-        var showInfo = function(item) {
-            infoNode.css('display', 'block');
-            costNode.html(item.message)
-        }
-
-        init(info);
+<style>
+    #insure-info li {
+        color: #636363;
+        background-color: #f4f4f4;
+        float: none;
+        padding: 6px 10px 6px 14px;
     }
+    #insure-info dt {
+        margin: 13px 0 5px;
+        font-weight: bold;
+    }
+</style>
 
-    new InsuranceShipping(<?php echo json_encode($this->getInsuranceData()) ?>)
-
+<script>
+   new InsuranceShipping(<?php echo json_encode($this->getInsuranceData()) ?>)
 </script>

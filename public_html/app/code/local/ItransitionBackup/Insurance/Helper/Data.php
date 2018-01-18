@@ -1,7 +1,7 @@
 <?php
 class Itransition_Insurance_Helper_Data extends Mage_Core_Helper_Abstract {
 
-    public static function getInsuranceCost($total, $type, $value)
+    public function getInsuranceCost($total, $type, $value)
     {
         switch ($type) {
             case Itransition_Insurance_Model_Source_Type::ABSOLUTE:

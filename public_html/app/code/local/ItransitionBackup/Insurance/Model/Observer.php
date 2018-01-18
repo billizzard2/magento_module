@@ -5,26 +5,21 @@ class Itransition_Insurance_Model_Observer
     public function checkout_controller_onepage_save_shipping_method(Varien_Event_Observer $observer)
     {
         $isAccepted = Mage::app()->getRequest()->getParam('s_insurance');
-        $address = $observer->getQuote()->getShippingAddress();
+
         if ($isAccepted) {
+            $quote = $observer->getQuote();
+            $address = $quote->getShippingAddress();
             $shippingMethod = $address->getShippingMethod();
             if ($shippingMethod) {
                 $shippingMethod = explode('_', $shippingMethod)[0];
-                $isEnabled = (bool)Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceEnable');
-                if ($isEnabled) {
-                    $type = Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceType');
-                    $value = Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceValue');
-                    $insuranceCost = Itransition_Insurance_Helper_Data::getInsuranceCost($address->getSubtotal(), $type, $value);
-                    $quote = $address->getQuote();
-                    $quote->setItInsurance($insuranceCost);
-                    $address->setItInsurance($insuranceCost);
-                }
+                $isEnabled = (bool) Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceEnable');
             }
+
+
         }
+
         return $this;
     }
-
-
 
 //    public function checkout_controller_onepage_save_shipping_method1(Varien_Event_Observer $observer)
 //    {
