@@ -9,18 +9,21 @@
 
     <global>
 
+        <fieldsets>
+            <sales_convert_quote_address>
+                <it_insurence><to_order>*</to_order></it_insurence>
+            </sales_convert_quote_address>
+        </fieldsets>
 
-
-
-            <sales>
-                <quote>
-                    <totals>
-                        <insurance>
-                            <class>insurance/sales_quote_address_total_fee</class>
-                        </insurance>
-                    </totals>
-                </quote>
-            </sales>
+        <sales>
+            <quote>
+                <totals>
+                    <insurance>
+                        <class>insurance/sales_quote_address_total_block</class>
+                    </insurance>
+                </totals>
+            </quote>
+        </sales>
 
 
 
