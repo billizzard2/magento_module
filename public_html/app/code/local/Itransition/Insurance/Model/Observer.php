@@ -36,19 +36,20 @@ class Itransition_Insurance_Model_Observer
         /** @var Mage_Core_Model_Config_Element $section */
         $section = $observer->getSection();
         $label = $section->label;
+        $a = new Mage_Core_Model_Config_Element('dfdf');
 
         if ($section->label == 'Shipping Methods') {
             $groups = $section->groups;
             /** @var Mage_Core_Model_Config_Element $group */
-
-                $groups->ups->fields->addChild('insuranceEnable');
-                $groups->ups->fields->insuranceEnable->addChild('label', 'difjdifd');
-                $groups->ups->fields->insuranceEnable->addChild('frontend_type', 'select');
-                $groups->ups->fields->insuranceEnable->addChild('source_model', 'adminhtml/system_config_source_yesno');
-                $groups->ups->fields->insuranceEnable->addChild('sort_order', '105');
-                $groups->ups->fields->insuranceEnable->addChild('show_in_default', '1');
-                $groups->ups->fields->insuranceEnable->addChild('show_in_website', '1');
-                $groups->ups->fields->insuranceEnable->addChild('show_in_store', '0');
+// echo Mage::getConfig()->getNode('catalog/mypage')->name;
+            $groups->ups->fields->addChild('insuranceEnable');
+            $groups->ups->fields->insuranceEnable->addChild('label', 'difjdifd');
+            $groups->ups->fields->insuranceEnable->addChild('frontend_type', 'select');
+            $groups->ups->fields->insuranceEnable->addChild('source_model', 'adminhtml/system_config_source_yesno');
+            $groups->ups->fields->insuranceEnable->addChild('sort_order', '105');
+            $groups->ups->fields->insuranceEnable->addChild('show_in_default', '1');
+            $groups->ups->fields->insuranceEnable->addChild('show_in_website', '1');
+            $groups->ups->fields->insuranceEnable->addChild('show_in_store', '0');
                 //$groups->ups->fields->insuranceEnable->addChild('show_in_store', '0');
 
             $xmlModel = new Varien_Simplexml_Element('<node></node>');
