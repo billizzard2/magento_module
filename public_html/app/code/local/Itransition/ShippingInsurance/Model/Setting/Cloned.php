@@ -8,10 +8,15 @@ class Itransition_ShippingInsurance_Model_Setting_Cloned extends Mage_Core_Model
         $carriers = Mage::getSingleton('shipping/config')->getAllCarriers();
 
         /** @var  $carrier Mage_Shipping_Model_Carrier_Abstract */
-        foreach ($carriers as $carrier) {
+        foreach ($carriers as $key => $carrier) {
+//            $prefixes[] = array(
+//                'field' => sprintf('field_%s_', $carrier->getCarrierCode()),
+//                'label' => $carrier->getConfigData('title'),
+//            );
+
             $prefixes[] = array(
-                'field' => sprintf('field_%s_', $carrier->getCarrierCode()),
-                'label' => $carrier->getConfigData('title'),
+                'label' => 111,
+                'field' => $key
             );
         }
         
