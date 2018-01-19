@@ -12,16 +12,32 @@ function InsuranceShipping(info) {
 
     var addEvents = function() {
         if (data.length) {
-            jQuery('body').on('change', '.sp-methods input[name=shipping_method]' , function() {
+            var nodeShippingStep = jQuery('#checkout-step-shipping_method');
+
+            nodeShippingStep.on('change', '.sp-methods input[name=shipping_method]' , function() {
                 hideInfo();
                 var value = jQuery(this).val();
-                data.forEach(function(item) {
-                    if (item.isEnabled && ~value.indexOf(item.method)) {
-                        showInfo(item);
-                    }
-                })
+                showInfo(findItem(value));
+            });
+
+            nodeShippingStep.on('DOMSubtreeModified', '#checkout-shipping-method-load', function() {
+                var checkedItem = jQuery('.sp-methods input[name=shipping_method]:checked');
+                if (checkedItem && checkedItem.length) {
+                    var value = checkedItem.val();
+                    showInfo(findItem(value));
+                }
             })
         }
+    }
+
+    var findItem = function(value) {
+        var result = false;
+        data.forEach(function(item) {
+            if (item.isEnabled && ~value.indexOf(item.method)) {
+                result =  item;
+            }
+        })
+        return result;
     }
 
     var hideInfo = function() {
@@ -30,12 +46,16 @@ function InsuranceShipping(info) {
     }
 
     var showInfo = function(item) {
-        infoNode.css('display', 'block');
-        costNode.html(item.message)
+        if (item) {
+            infoNode.css('display', 'block');
+            costNode.html(item.message)
+        }
     }
 
     init(info);
 }
+
+
 
 
 

@@ -2,11 +2,8 @@
 <config>
     <modules>
         <Itransition_ShippingInsurance>
-            <active>false</active>
+            <active>true</active>
             <codePool>local</codePool>
-            <depends>
-                <Mage_Checkout/>
-            </depends>
         </Itransition_ShippingInsurance>
     </modules>
 </config>

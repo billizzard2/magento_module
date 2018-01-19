@@ -1,5 +1,5 @@
 <?php
-class Itransition_Insurance_Block_Adminhtml_Totals_Creditmemo extends Mage_Adminhtml_Block_Sales_Order_Creditmemo_Totals
+class Itransition_Insurance_Block_Adminhtml_Sales_Order_Creditmemo_Totals extends Mage_Adminhtml_Block_Sales_Order_Creditmemo_Totals
 {
     protected $_code = 'it_insurance';
 

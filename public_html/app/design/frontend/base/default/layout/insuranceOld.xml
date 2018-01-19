@@ -2,39 +2,64 @@
 
 <layout version="0.1.0">
 
-<!--    <checkout_onepage_index translate="label">
-        <reference name='form.additional.info'>
-            <block type='insurance/mycontent' name='insurance.mycontent' template='insurance/mycontent.phtml'/>
-        </reference>
-    </checkout_onepage_index>-->
+    <!--    <checkout_onepage_index>
+            <reference name='head'>
+                <action method="addJs"><script>insurance/insurance.js</script></action>
+            </reference>
+            <block type='insurance/mycontent' name='checkout.onepage.shipping_method' template='insurance/mycontent.phtml'/>
+        </checkout_onepage_index>
+
+        <checkout_onepage_shippingmethod>
+            <reference name="root">
+                <action method="setTemplate"><template>insurance/onepage/shipping_method/available.phtml</template></action>
+                <block type='insurance/mycontent' name='additional' template='insurance/mycontent.phtml'/>
+            </reference>
+        </checkout_onepage_shippingmethod>-->
 
     <checkout_onepage_index>
         <reference name='head'>
             <action method="addJs"><script>insurance/insurance.js</script></action>
         </reference>
-        <block type='insurance/mycontent' name='checkout.onepage.shipping_method' template='insurance/mycontent.phtml'/>
+        <reference name="checkout.onepage.shipping_method">
+            <block type="insurance/insurance" name="additional" template="insurance/insurance.phtml"/>
+        </reference>
+
+
+        <!--<block type="insurance/onepage_progress" name="shippingmethod.progress" template="insurance/checkout/onepage/progress/shipping_method.phtml"/>-->
+
+        <!--<reference name="shippingmethod.progress">-->
+        <!--<action method="setTemplate">-->
+        <!--<template>insurance/checkout/onepage/progress/shipping_method.phtml</template>-->
+        <!--</action>-->
+        <!--&lt;!&ndash;<block type="insurance/onepage_progress" name="shippingmethod.progress" template="insurance/checkout/onepage/progress/shipping_method.phtml"/>&ndash;&gt;-->
+        <!--</reference>-->
+
+        <!--        <reference name="right">
+                    <remove name="shippingmethod.progress"></remove>
+                    <block type="insurance/onepage_progress" name="shippingmethod.progress" template="insurance/checkout/onepage/progress/shipping_method.phtml"/>
+                </reference>-->
+        <!--<block type="insurance/onepage_progress" name="right" output="toHtml" template="insurance/onepage/progress/shipping_method.phtml">
+            <action method="setInfoTemplate"><method></method><template></template></action>
+        </block>-->
+
+        <!--<block type="checkout/onepage_progress" name="shippingmethod.progress" template="checkout/onepage/progress/shipping_method.phtml"></block>-->
+
+        <!--<block type="insurance/onepage_progress" name="shippingmethod.progress" template="insurance/onepage/progress/shipping_method.phtml"/>-->
+
+
     </checkout_onepage_index>
 
-    <!--<checkout_onepage_paymentmethod>-->
-        <!--<reference name='checkout.onepage.payment.methods.additional'>-->
-            <!--<block type='insurance/mycontent' name='insurance.mycontent' template='insurance/mycontent.phtml'/>-->
-        <!--</reference>-->
-    <!--</checkout_onepage_paymentmethod>-->
+    <!--<checkout_onepage_progress>
+        <action method="setTemplate">
+        <template>insurance/checkout/onepage/progress/shipping_method.phtml</template>
+        </action>
+        &lt;!&ndash;<block type="insurance/onepage_progress" name="shippingmethod.progress" template="insurance/checkout/onepage/progress/shipping_method.phtml"/>&ndash;&gt;
+    </checkout_onepage_progress>-->
 
-    <!--<checkout_onepage_shippingmethod>
-        <reference name='additional'>
-            <block type='insurance/mycontent' name='sdfsdf' template='insurance/mycontent.phtml'/>
-        </reference>
-    </checkout_onepage_shippingmethod>-->
-
-    <checkout_onepage_shippingmethod>
-        <reference name="root">
-            <action method="setTemplate"><template>insurance/onepage/shipping_method/available.phtml</template></action>
-            <block type='insurance/mycontent' name='additional' template='insurance/mycontent.phtml'/>
-        </reference>
-    </checkout_onepage_shippingmethod>
-
-
-
+    <checkout_onepage_progress_shipping_method>
+        <block type="insurance/onepage_progress" name="root" output="toHtml" template="insurance/checkout/onepage/progress/shipping_method.phtml">
+            <action method="setInfoTemplate"><method></method><template></template></action>
+        </block>
+    </checkout_onepage_progress_shipping_method>
 
 </layout>

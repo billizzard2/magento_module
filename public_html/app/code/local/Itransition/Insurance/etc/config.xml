@@ -61,11 +61,17 @@
 
             <adminhtml>
                 <rewrite>
-                    <sales_order_invoice_totals>Itransition_Insurance_Block_Adminhtml_Totals_Invoice</sales_order_invoice_totals>
-                    <sales_order_creditmemo_totals>Itransition_Insurance_Block_Adminhtml_Totals_Creditmemo</sales_order_creditmemo_totals>
-                    <sales_order_totals>Itransition_Insurance_Block_Adminhtml_Totals_Order</sales_order_totals>
+                    <sales_order_invoice_totals>Itransition_Insurance_Block_Adminhtml_Sales_Order_Invoice_Totals</sales_order_invoice_totals>
+                    <sales_order_creditmemo_totals>Itransition_Insurance_Block_Adminhtml_Sales_Order_Creditmemo_Totals</sales_order_creditmemo_totals>
+                    <sales_order_totals>Itransition_Insurance_Block_Adminhtml_Sales_Order_Totals</sales_order_totals>
                 </rewrite>
             </adminhtml>
+
+            <checkout>
+                <rewrite>
+                    <onepage_progress>Itransition_Insurance_Block_Onepage_Progress</onepage_progress>
+                </rewrite>
+            </checkout>
 
             <!--<sales>
                 <rewrite>

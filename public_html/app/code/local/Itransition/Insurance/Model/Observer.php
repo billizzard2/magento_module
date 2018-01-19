@@ -4,54 +4,32 @@ class Itransition_Insurance_Model_Observer
 {
     public function checkout_controller_onepage_save_shipping_method(Varien_Event_Observer $observer)
     {
-        $isAccepted = Mage::app()->getRequest()->getParam('s_insurance');
+        $isAccepted = (bool) Mage::app()->getRequest()->getParam('s_insurance');
+        $isMethod = (bool) Mage::app()->getRequest()->getParam('shipping_method');
+        $params = Mage::app()->getRequest()->getParams();
         $address = $observer->getQuote()->getShippingAddress();
-        if ($isAccepted) {
-            $shippingMethod = $address->getShippingMethod();
-            if ($shippingMethod) {
-                $shippingMethod = explode('_', $shippingMethod)[0];
-                $isEnabled = (bool)Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceEnable');
-                if ($isEnabled) {
-                    $type = Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceType');
-                    $value = Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceValue');
-                    $insuranceCost = Itransition_Insurance_Helper_Data::getInsuranceCost($address->getSubtotal(), $type, $value);
-                    $quote = $address->getQuote();
-                    $quote->setItInsurance($insuranceCost);
-                    $address->setItInsurance($insuranceCost);
+        if ($isMethod) {
+            if ($isAccepted) {
+                $shippingMethod = $address->getShippingMethod();
+                if ($shippingMethod) {
+                    $shippingMethod = explode('_', $shippingMethod)[0];
+                    $isEnabled = (bool)Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceEnable');
+                    if ($isEnabled) {
+                        $type = Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceType');
+                        $value = Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceValue');
+                        $insuranceCost = Itransition_Insurance_Helper_Data::getInsuranceCost($address->getSubtotal(), $type, $value);
+                        $quote = $address->getQuote();
+                        $quote->setItInsurance($insuranceCost);
+                        $address->setItInsurance($insuranceCost);
+                    }
                 }
+            } else {
+                $quote = $address->getQuote();
+                $quote->setItInsurance(0);
+                $address->setItInsurance(0);
             }
         }
         return $this;
     }
 
-
-
-//    public function checkout_controller_onepage_save_shipping_method1(Varien_Event_Observer $observer)
-//    {
-//        $isAddInsurance = Mage::app()->getRequest()->getParam('s_insurance');
-//        /** @var Itransition_Insurance_Helper_Data $helper */
-//        $helper = Mage::helper('insurance');
-//        $shippingMethod = $this->getShippingMethod();
-//
-//        if ($isAddInsurance) {
-//            $isEnable = (bool) Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceEnable');
-//            $type = Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceType');
-//            $value =  Mage::getStoreConfig('carriers/' . $shippingMethod . '/insuranceValue');
-//            if ($isEnable) {
-//                $total = Mage::getModel('checkout/cart')->getQuote()->getBaseSubtotal();
-//                $cost = $helper->getInsuranceCost($total, $type, $value);
-//            }
-//        }
-//
-//        return $this;
-//    }
-//
-//    private function getShippingMethod1()
-//    {
-//        $cart = Mage::getModel('checkout/cart');
-//        /** @var Mage_Sales_Model_Quote $quote */
-//        $shippingMethod = explode('_', $cart->getQuote()->getShippingAddress()->getShippingMethod())[0];
-//
-//        return $shippingMethod;
-//    }
 }
