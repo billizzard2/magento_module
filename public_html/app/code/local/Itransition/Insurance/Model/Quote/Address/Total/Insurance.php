@@ -2,7 +2,7 @@
 
 class Itransition_Insurance_Model_Quote_Address_Total_Insurance extends Mage_Sales_Model_Quote_Address_Total_Abstract
 {
-    protected $_code = 'insurance';
+    protected $_code = 'it_insurance';
 
     public function collect(Mage_Sales_Model_Quote_Address $address)
     {
@@ -14,15 +14,9 @@ class Itransition_Insurance_Model_Quote_Address_Total_Insurance extends Mage_Sal
         }
 
         if ($address->getItInsurance()) {
-            $quote = $address->getQuote();
-//            $quote->setItInsurance($insuranceCost);
-//            $address->setItInsurance($insuranceCost);
             $address->setGrandTotal($address->getGrandTotal() + $address->getItInsurance());
             $address->setBaseGrandTotal($address->getBaseGrandTotal() + $address->getItInsurance());
         }
-
-
-
     }
 
     public function fetch(Mage_Sales_Model_Quote_Address $address)
@@ -31,7 +25,7 @@ class Itransition_Insurance_Model_Quote_Address_Total_Insurance extends Mage_Sal
         $address->addTotal(
             array (
                 'code' => $this->getCode(),
-                'title'=>Mage::helper('insurance')->__('Label Insurance 111'),
+                'title'=>Mage::helper('insurance')->__('Shipping Insurance'),
                 'value' => $amt
             )
         );

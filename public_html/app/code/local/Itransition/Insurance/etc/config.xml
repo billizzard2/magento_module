@@ -9,6 +9,14 @@
 
     <global>
 
+        <models>
+            <sales>
+                <rewrite>
+                    <order>Itransition_Insurance_Model_Sales_Order</order>
+                </rewrite>
+            </sales>
+        </models>
+
 
         <sales>
             <quote>
@@ -73,13 +81,14 @@
                 </rewrite>
             </checkout>
 
-            <!--<sales>
+            <sales>
                 <rewrite>
-                    <order_totals>Itransition_ShippingInsurance_Block_Totals_SalesOrder</order_totals>
-                    <order_invoice_totals>Itransition_ShippingInsurance_Block_Totals_SalesOrderInvoice</order_invoice_totals>
-                    <order_creditmemo_totals>Itransition_ShippingInsurance_Block_Totals_SalesOrderCreditmemo</order_creditmemo_totals>
+                    <order_totals>Itransition_Insurance_Block_Sales_Order_Totals</order_totals>
+                    <order_invoice_totals>Itransition_Insurance_Block_Sales_Order_Invoice_Totals</order_invoice_totals>
+                    <order_creditmemo_totals>Itransition_Insurance_Block_Sales_Order_Creditmemo_Totals</order_creditmemo_totals>
                 </rewrite>
-            </sales>-->
+            </sales>
+
         </blocks>
 
         <events>
