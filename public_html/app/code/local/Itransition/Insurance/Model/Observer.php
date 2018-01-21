@@ -6,7 +6,6 @@ class Itransition_Insurance_Model_Observer
     {
         $isAccepted = (bool) Mage::app()->getRequest()->getParam('s_insurance');
         $isMethod = (bool) Mage::app()->getRequest()->getParam('shipping_method');
-        $params = Mage::app()->getRequest()->getParams();
         $address = $observer->getQuote()->getShippingAddress();
         if ($isMethod) {
             if ($isAccepted) {
@@ -35,29 +34,43 @@ class Itransition_Insurance_Model_Observer
     public function adminhtml_block_system_config_init_tab_sections_before($observer) {
         /** @var Mage_Core_Model_Config_Element $section */
         $section = $observer->getSection();
-        $label = $section->label;
-        $a = new Mage_Core_Model_Config_Element('dfdf');
 
         if ($section->label == 'Shipping Methods') {
             $groups = $section->groups;
-            /** @var Mage_Core_Model_Config_Element $group */
-// echo Mage::getConfig()->getNode('catalog/mypage')->name;
-            $groups->ups->fields->addChild('insuranceEnable');
-            $groups->ups->fields->insuranceEnable->addChild('label', 'difjdifd');
-            $groups->ups->fields->insuranceEnable->addChild('frontend_type', 'select');
-            $groups->ups->fields->insuranceEnable->addChild('source_model', 'adminhtml/system_config_source_yesno');
-            $groups->ups->fields->insuranceEnable->addChild('sort_order', '105');
-            $groups->ups->fields->insuranceEnable->addChild('show_in_default', '1');
-            $groups->ups->fields->insuranceEnable->addChild('show_in_website', '1');
-            $groups->ups->fields->insuranceEnable->addChild('show_in_store', '0');
-                //$groups->ups->fields->insuranceEnable->addChild('show_in_store', '0');
+            $carriers = Mage::getSingleton('shipping/config')->getAllCarriers();
+            foreach ($carriers as $key => $carrier) {
+                $groups->{$key}->fields->addChild('insuranceEnable');
+                $groups->{$key}->fields->insuranceEnable->addChild('label', Mage::helper('insurance')->__('Include insurance'));
+                $groups->{$key}->fields->insuranceEnable->addChild('frontend_type', 'select');
+                $groups->{$key}->fields->insuranceEnable->addChild('source_model', 'adminhtml/system_config_source_yesno');
+                $groups->{$key}->fields->insuranceEnable->addChild('sort_order', '2005');
+                $groups->{$key}->fields->insuranceEnable->addChild('show_in_default', '1');
+                $groups->{$key}->fields->insuranceEnable->addChild('show_in_website', '1');
+                $groups->{$key}->fields->insuranceEnable->addChild('show_in_store', '0');
 
-            $xmlModel = new Varien_Simplexml_Element('<node></node>');
-            //$section->($xmlModel);
+                $groups->{$key}->fields->addChild('insuranceType');
+                $groups->{$key}->fields->insuranceType->addChild('label', Mage::helper('insurance')->__('Calculation type'));
+                $groups->{$key}->fields->insuranceType->addChild('frontend_type', 'select');
+                $groups->{$key}->fields->insuranceType->addChild('source_model', 'insurance/source_type');
+                $groups->{$key}->fields->insuranceType->addChild('sort_order', '2006');
+                $groups->{$key}->fields->insuranceType->addChild('show_in_default', '1');
+                $groups->{$key}->fields->insuranceType->addChild('show_in_website', '1');
+                $groups->{$key}->fields->insuranceType->addChild('show_in_store', '0');
+                $groups->{$key}->fields->insuranceType->addChild('depends');
+                $groups->{$key}->fields->insuranceType->depends->addChild('insuranceEnable', '1');
+
+                $groups->{$key}->fields->addChild('insuranceValue');
+                $groups->{$key}->fields->insuranceValue->addChild('label', Mage::helper('insurance')->__('Value'));
+                $groups->{$key}->fields->insuranceValue->addChild('frontend_type', 'text');
+                $groups->{$key}->fields->insuranceValue->addChild('sort_order', '2007');
+                $groups->{$key}->fields->insuranceValue->addChild('show_in_default', '1');
+                $groups->{$key}->fields->insuranceValue->addChild('show_in_website', '1');
+                $groups->{$key}->fields->insuranceValue->addChild('show_in_store', '0');
+                $groups->{$key}->fields->insuranceValue->addChild('can_be_empty', '0');
+                $groups->{$key}->fields->insuranceValue->addChild('validate', 'required-entry validate-number');
+                $groups->{$key}->fields->insuranceValue->addChild('depends');
+                $groups->{$key}->fields->insuranceValue->depends->addChild('insuranceEnable', '1');
+            }
         }
-        $a = '3';
-        $b = $a;
-
     }
-
 }

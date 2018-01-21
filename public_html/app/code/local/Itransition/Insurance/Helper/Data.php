@@ -16,23 +16,29 @@ class Itransition_Insurance_Helper_Data extends Mage_Core_Helper_Abstract {
         return 0;
     }
 
+    public function addTotals($class)
+    {
+        $order = $class->getOrder();
+        $amount = $order->getItInsurance();
+        $class->addTotalBefore(
+            new Varien_Object(
+                [
+                    'code' => $class->getCode(),
+                    'value' => $amount,
+                    'base_value' => $amount,
+                    'label' => $class->helper('insurance')->__('Insurance')
+                ],
+                'grand_total'
+            )
+        );
+    }
+
     public function getTypePostfix($absolutePostfix)
     {
         return [
             Itransition_Insurance_Model_Source_Type::ABSOLUTE => $absolutePostfix,
             Itransition_Insurance_Model_Source_Type::PERCENT => '%',
         ];
-    }
-
-    public function getMessage($cost, $currency, $insuranceValue, $postfix = null, $status = null)
-    {
-        $description = '';
-
-        if ($status && $postfix) {
-            $description = ' (' . $status . ': ' . $insuranceValue . ' ' . $postfix . ')';
-        }
-
-        return 'Cost: ' . $cost . ' ' . $currency . $description;
     }
 
     public function getIsEnabled($shippingMethod)

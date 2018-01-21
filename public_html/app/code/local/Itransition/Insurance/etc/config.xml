@@ -6,9 +6,7 @@
             <version>0.1.0</version>
         </Itransition_Insurance>
     </modules>
-
     <global>
-
         <models>
             <sales>
                 <rewrite>
@@ -17,26 +15,25 @@
             </sales>
         </models>
 
-
         <sales>
             <quote>
                 <totals>
                     <insurance>
-                        <class>insurance/Quote_Address_Total_Insurance</class>
+                        <class>insurance/Quote_Address_Total</class>
                     </insurance>
                 </totals>
             </quote>
             <order_invoice>
                 <totals>
                     <shipping_insurance>
-                        <class>insurance/Order_Invoice_Total_Invoice</class>
+                        <class>insurance/Order_Invoice_Total</class>
                     </shipping_insurance>
                 </totals>
             </order_invoice>
             <order_creditmemo>
                 <totals>
                     <shipping_insurance>
-                        <class>insurance/Order_Creditmemo_Total_Creditmemo</class>
+                        <class>insurance/Order_Creditmemo_Total</class>
                     </shipping_insurance>
                 </totals>
             </order_creditmemo>
@@ -88,18 +85,9 @@
                     <order_creditmemo_totals>Itransition_Insurance_Block_Sales_Order_Creditmemo_Totals</order_creditmemo_totals>
                 </rewrite>
             </sales>
-
         </blocks>
 
         <events>
-            <!--<adminhtml_init_system_config>
-                <observers>
-                    <init_system_config>
-                        <class>insurance/observer</class>
-                        <method>changeSystemConfig</method>
-                    </init_system_config>
-                </observers>
-            </adminhtml_init_system_config>-->
             <checkout_controller_onepage_save_shipping_method>
                 <observers>
                     <insurance>
@@ -181,5 +169,4 @@
             </freeshipping>
         </carriers>
     </default>
-
 </config>
